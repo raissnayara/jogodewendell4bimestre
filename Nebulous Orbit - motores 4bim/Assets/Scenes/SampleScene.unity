@@ -133,8 +133,10 @@ GameObject:
   m_Component:
   - component: {fileID: 10586556}
   - component: {fileID: 10586555}
+  - component: {fileID: 10586558}
+  - component: {fileID: 10586557}
   m_Layer: 0
-  m_Name: bala
+  m_Name: laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,13 +202,48 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10586554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -4.11, z: 0}
-  m_LocalScale: {x: 1.3447, y: 1.3447, z: 1.3447}
+  m_LocalPosition: {x: 2.07, y: -5.91, z: 0}
+  m_LocalScale: {x: 1.5438501, y: 1.3617777, z: 1.3447}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &10586557
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10586554}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &10586558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10586554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e852b91946b8e47b7b19e276d96f49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rig: {fileID: 10586557}
+  velocidadeLaser: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +558,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 72867dcc5b05c714292613ff2f273ac6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -541,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094002187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.41, y: -7.81, z: 0}
+  m_LocalPosition: {x: 0.51, y: -8.03, z: 0}
   m_LocalScale: {x: 0.8473013, y: 0.8473013, z: 0.8473013}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -583,6 +620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 2094002190}
   speed: 10
+  laserPrefab: {fileID: 10586558}
+  TempoEsperaTiro: 0.5
 --- !u!1001 &6884694298158991593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -650,5 +689,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6884694297930704597, guid: dcce862ea6508034cb2dbe7c93393f32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -2667483099876349315, guid: dcce862ea6508034cb2dbe7c93393f32, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dcce862ea6508034cb2dbe7c93393f32, type: 3}
