@@ -12,11 +12,18 @@ public class PlayerNave : MonoBehaviour
     public Laser laserPrefab;
     private float IntervaloTiro;
     public float TempoEsperaTiro;
+
+    public Transform[] posicoesArmas;
+    private Transform ArmaAtual;
+    
+    
     
     // Start is called before the first frame update
     void Start()
     {
         this.IntervaloTiro = 0;
+        this.ArmaAtual = this.posicoesArmas[0];
+        ControladorPontuaçao.Pontuacao = 0;
     }
 
     // Update is called once per frame
@@ -42,16 +49,26 @@ public class PlayerNave : MonoBehaviour
 
     private void Atirar()
     {
-        Instantiate(this.laserPrefab, this.transform.position, quaternion.identity);
-    }
-
-    public void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("inimigo"))
+        Instantiate(this.laserPrefab, this.ArmaAtual.position, quaternion.identity);
+        if (this.ArmaAtual == this.posicoesArmas[0])
         {
-            Destroy(collider.gameObject);
+            this.ArmaAtual = this.posicoesArmas[1];
             
-            Destroy(this.gameObject);
+        }
+
+        else
+        {
+            this.ArmaAtual = this.posicoesArmas[0];
         }
     }
+
+    //public void OnTriggerEnter2D(Collider2D collider)
+    //{
+        //if (collider.CompareTag("inimigo"))
+        //{
+            //Destroy(collider.gameObject);
+            
+            //Destroy(this.gameObject);
+        //}
+    //}
 }

@@ -22,4 +22,10 @@ public class Inimigo : MonoBehaviour
     {
         this.rigid.velocity = new Vector2(0, -this.VelocidadeY);
     }
+
+    public void Destruir()
+    {
+        ControladorPontuaçao.Pontuacao++;
+        Destroy(this.gameObject);
+    }
 }

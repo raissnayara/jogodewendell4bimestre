@@ -13,6 +13,15 @@ public class Laser : MonoBehaviour
         this.rig.velocity = new Vector2(0, this.velocidadeLaser);
     }
 
-    // Update is called once per frame
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("inimigo"))
+        {
+            Inimigo inimigo = collider.GetComponent<Inimigo>();
+            inimigo.Destruir();
+            
+            Destroy(this.gameObject);
+        }
+    }
     
 }
