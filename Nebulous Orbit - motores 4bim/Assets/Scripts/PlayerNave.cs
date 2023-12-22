@@ -15,6 +15,8 @@ public class PlayerNave : MonoBehaviour
 
     public Transform[] posicoesArmas;
     private Transform ArmaAtual;
+
+    private int vidas;
     
     
     
@@ -45,6 +47,29 @@ public class PlayerNave : MonoBehaviour
         
         
         this.rig.velocity = new Vector2(velocidadeX,velocidadeY);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("inimigo"))
+        {
+            Vida--;
+            Inimigo inimigo = collider.GetComponent<Inimigo>();
+            inimigo.Destruir(false);
+        }
+    }
+
+    public int Vida
+    {
+        get { return this.vidas;}
+        set
+        {
+            this.vidas = value;
+            if (this.vidas < 0)
+            {
+                this.vidas = 0;
+            }
+        }
     }
 
     private void Atirar()
