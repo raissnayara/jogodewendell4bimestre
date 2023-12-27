@@ -17,6 +17,10 @@ public class PlayerNave : MonoBehaviour
     private Transform ArmaAtual;
 
     private int vidas;
+
+    private FimdeJogo fimjogo;
+
+    private SpriteRenderer spriteRenderer;
     
     
     
@@ -47,6 +51,69 @@ public class PlayerNave : MonoBehaviour
         
         
         this.rig.velocity = new Vector2(velocidadeX,velocidadeY);
+        
+        VerificarLimiteTela();
+    }
+
+    private void VerificarLimiteTela()
+    {
+        Vector2 posicaoAtual = this.transform.position;
+
+        float metadeLargura = Largura / 2f;
+        float metadeAltura = Altura / 2f;
+
+        Camera camera = Camera.main;
+        Vector2 LimiteInferiorEsquerdo = camera.ViewportToWorldPoint(Vector2.zero);
+        Vector2 LimiteSuperiordireito = camera.ViewportToWorldPoint(Vector2.zero);
+
+        float pontoReferenciaEsquerdo = posicaoAtual.x - metadeLargura;
+        float pontoReferenciaDireito = posicaoAtual.x + metadeLargura;
+
+        if (pontoReferenciaEsquerdo < LimiteInferiorEsquerdo.x)
+        {
+            this.transform.position = new Vector2(LimiteInferiorEsquerdo.x + metadeLargura,posicaoAtual.y);
+        }
+        else if(pontoReferenciaDireito < LimiteSuperiordireito.x)
+        {
+            this.transform.position = new Vector2(LimiteSuperiordireito.x - metadeLargura, posicaoAtual.y);
+        }
+
+        posicaoAtual = this.transform.position;
+
+        float pontoRefernciaSuperior = posicaoAtual.y + metadeAltura;
+        float pontoReferenciaInferior = posicaoAtual.y - metadeAltura;
+
+        if (pontoRefernciaSuperior > LimiteSuperiordireito.y)
+        {
+            this.transform.position = new Vector2(posicaoAtual.x, LimiteSuperiordireito.y - metadeAltura);
+            
+        }
+        
+        else if (pontoReferenciaDireito < LimiteSuperiordireito.y)
+        {
+            this.transform.position = new Vector2(posicaoAtual.x, LimiteInferiorEsquerdo.y - metadeAltura);
+        }
+
+    }
+
+    private float Largura
+    {
+        get
+        {
+            Bounds bounds = this.spriteRenderer.bounds;
+            Vector3 tamanho = bounds.size;
+            return tamanho.x;
+        }
+    }
+    
+    private float Altura
+    {
+        get
+        {
+            Bounds bounds = this.spriteRenderer.bounds;
+            Vector3 tamanho = bounds.size;
+            return tamanho.y;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
