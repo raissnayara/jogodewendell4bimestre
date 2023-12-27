@@ -1224,6 +1224,7 @@ MonoBehaviour:
   VelocidadeMinima: 1
   VelocidadeMaxima: 2
   VelocidadeY: 5
+  particulaExplosaoprefab: {fileID: 3535494832294525552, guid: c8925d09384cf6c418c71785f0bf497c, type: 3}
 --- !u!50 &1941810751
 Rigidbody2D:
   serializedVersion: 4
@@ -1294,7 +1295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2081817282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,7 +1393,7 @@ GameObject:
   - component: {fileID: 2094002192}
   m_Layer: 0
   m_Name: Nave
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

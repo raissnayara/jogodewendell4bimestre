@@ -140,3 +140,4 @@ MonoBehaviour:
   VelocidadeMinima: 1
   VelocidadeMaxima: 2
   VelocidadeY: 0
+  particulaExplosaoprefab: {fileID: 3535494832294525552, guid: c8925d09384cf6c418c71785f0bf497c, type: 3}
