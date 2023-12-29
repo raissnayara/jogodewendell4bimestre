@@ -6,18 +6,45 @@ using Random = UnityEngine.Random;
 
 public class Inimigo : MonoBehaviour
 {
+
+    public SpriteRenderer spriteRenderer;
+    
+    
     public Rigidbody2D rigid;
 
+    
+    
     public float VelocidadeMinima;
-
     public float VelocidadeMaxima;
-
     public float VelocidadeY;
 
     public ParticleSystem particulaExplosaoprefab;
     // Start is called before the first frame update
     void Start()
     {
+        Vector2 posicaoAtual = this.transform.position;
+        float metadeLargura = Largura / 2f;
+
+        float pontoReferenciaEsquerda = posicaoAtual.x - metadeLargura;
+        float pontoReferenciaDireita = posicaoAtual.x + metadeLargura;
+
+        Camera camera = Camera.main;
+        Vector2 LimiteInferiorEsquerdo = camera.ViewportToWorldPoint(Vector2.zero);
+        Vector2 LimiteSuperiorDireito = camera.ViewportToWorldPoint(Vector2.one);
+
+        if (pontoReferenciaEsquerda < LimiteInferiorEsquerdo.x)
+        {
+            float PosicaoX = LimiteInferiorEsquerdo.x - metadeLargura;
+            this.transform.position = new Vector2(PosicaoX, posicaoAtual.y);
+        }
+        
+        else if (pontoReferenciaDireita > LimiteSuperiorDireito.x)
+        {
+            float posicaoX = LimiteSuperiorDireito.x - metadeLargura;
+            this.transform.position = new Vector2(posicaoX, posicaoAtual.y);
+        }
+        
+        
         this.VelocidadeY = Random.Range(this.VelocidadeMinima, this.VelocidadeMaxima);
     }
 
@@ -34,6 +61,16 @@ public class Inimigo : MonoBehaviour
             PlayerNave nave = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerNave>();
             nave.Vida--;
             Destruir(false);
+        }
+    }
+
+    private float Largura
+    {
+        get
+        {
+            Bounds bounds = this.spriteRenderer.bounds;
+            Vector3 tamanho = bounds.size;
+            return tamanho.x;
         }
     }
 
