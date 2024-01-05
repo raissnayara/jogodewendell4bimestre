@@ -160,7 +160,7 @@ public class PlayerNave : MonoBehaviour
         //{
             //Destroy(collider.gameObject);
             
-            //Destroy(this.gameObject);
-        //}
+           // Destroy(this.gameObject);
+        }
     //}
-}
+

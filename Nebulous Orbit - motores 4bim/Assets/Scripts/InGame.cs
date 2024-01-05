@@ -14,7 +14,7 @@ public class InGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.Nave = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerNave>();
+        this.Nave = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerNave>();
     }
 
     // Update is called once per frame
