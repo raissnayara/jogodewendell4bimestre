@@ -15,9 +15,10 @@ public class PlayerNave : MonoBehaviour
 
     public Transform[] posicoesArmas;
     private Transform ArmaAtual;
-
+    
     private int vidas;
 
+    public GameObject telaFimJogo;
     private FimdeJogo fimjogo;
 
     private SpriteRenderer spriteRenderer;
@@ -30,6 +31,10 @@ public class PlayerNave : MonoBehaviour
         this.IntervaloTiro = 0;
         this.ArmaAtual = this.posicoesArmas[0];
         ControladorPontuaçao.Pontuacao = 0;
+        
+        GameObject fimJogoGameObject = GameObject.FindGameObjectWithTag("TelaFimJogo");
+        //this.telaFimJogo = fimJogoGameObject.GetComponent<FimJogo>();
+        //this.telaFimJogo.Esconder();
     }
 
     // Update is called once per frame
@@ -132,9 +137,11 @@ public class PlayerNave : MonoBehaviour
         set
         {
             this.vidas = value;
-            if (this.vidas < 0)
+            if (this.vidas <= 0)
             {
                 this.vidas = 0;
+                GameOver();
+                //telaFimJogo.Exibir();
             }
         }
     }
@@ -154,13 +161,12 @@ public class PlayerNave : MonoBehaviour
         }
     }
 
-    //public void OnTriggerEnter2D(Collider2D collider)
-    //{
-        //if (collider.CompareTag("inimigo"))
-        //{
-            //Destroy(collider.gameObject);
-            
-           // Destroy(this.gameObject);
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        telaFimJogo.gameObject.SetActive(true);
+    }
         }
-    //}
+  
 

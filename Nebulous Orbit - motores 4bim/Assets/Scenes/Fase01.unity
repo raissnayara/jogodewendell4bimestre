@@ -1687,7 +1687,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1241880334}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1791948260}
+        m_TargetAssemblyTypeName: FimdeJogo, Assembly-CSharp
+        m_MethodName: TentarNovamente
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1241880334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2050,13 +2062,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1791948259}
+  - component: {fileID: 1791948260}
   m_Layer: 5
   m_Name: FimJogo
-  m_TagString: Untagged
+  m_TagString: TelaFimJogo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1791948259
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2080,6 +2093,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1791948260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791948258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a1c236c474ed7448c8ae973129744e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "TextoPontua\xE7ao": {fileID: 1017679455}
 --- !u!1 &1863628766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,6 +2564,7 @@ MonoBehaviour:
   posicoesArmas:
   - {fileID: 602326270}
   - {fileID: 1994937957}
+  telaFimJogo: {fileID: 1791948258}
 --- !u!61 &2094002192
 BoxCollider2D:
   m_ObjectHideFlags: 0

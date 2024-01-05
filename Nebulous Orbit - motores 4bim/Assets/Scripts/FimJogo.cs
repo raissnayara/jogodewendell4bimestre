@@ -16,6 +16,11 @@ public class FimJogo : MonoBehaviour
         this.textoPontuacao.text = (ControladorPontuaçao.Pontuacao + "x");
     }
 
+    public void Esconder()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     public void TentarNovamente()
     {
         SceneManager.LoadScene("Fase01");
