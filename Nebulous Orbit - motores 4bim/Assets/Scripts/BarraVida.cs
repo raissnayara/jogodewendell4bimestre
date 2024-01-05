@@ -14,12 +14,12 @@ public class BarraVida : MonoBehaviour
         {
             if (i < vidas)
             {
-                this.BarrasVermelhas[i].SetActive(true);
+                this.BarrasVermelhas[i].SetActive(false);
             }
 
             else
             {
-                this.BarrasVermelhas[i].SetActive(false);
+                this.BarrasVermelhas[i].SetActive(true);
             }
         }
     }

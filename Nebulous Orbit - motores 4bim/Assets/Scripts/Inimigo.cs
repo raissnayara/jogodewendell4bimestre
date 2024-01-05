@@ -58,7 +58,7 @@ public class Inimigo : MonoBehaviour
         if (posicaoNaCamera.y < 0)
         {
             //inimigo saiu da area da camera
-            PlayerNave nave = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerNave>();
+            PlayerNave nave = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerNave>();
             nave.Vida--;
             Destruir(false);
         }
